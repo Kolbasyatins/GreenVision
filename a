@@ -1,0 +1,6 @@
+ffmpeg \
+    -re -f lavfi -i testsrc=size=1280x720:rate=30 \  # Генерация тестового видео
+    -f lavfi -i sine=frequency=440 \                 # Генерация тестового аудио
+    -c:v libx264 -preset ultrafast \
+    -c:a aac -b:a 128k \
+    -f flv rtmp://10.100.30.115:1935/live/test
